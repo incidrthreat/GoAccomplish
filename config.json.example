@@ -1,0 +1,9 @@
+{
+    "listen_interface":"localhost:8080",
+    "database": {
+        "host": "localhost",
+        "name": "dbname",
+        "user": "dbuser",
+        "password": "dbuser"
+    }
+}

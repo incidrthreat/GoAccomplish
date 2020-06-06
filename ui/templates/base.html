@@ -1,0 +1,63 @@
+{{define "base"}}
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>{{template "page-title" .}} - GoAccomplish</title>
+    </head>
+    <body>
+        <!-- Start of Nav -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="/">GoAccomplish</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Rules</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hello, There! :)
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <a class="dropdown-item fa fa-user" href="/profile"> My Profile</a>
+                                <a class="dropdown-item fa fa-cog" href="#"> Settings</a>
+                                {{ if .IsAdmin }}
+                                <a class="dropdown-item fa fa-list-alt" href="#"> Admin CP</a>
+                                {{ end }}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item fa fa-sign-out" href="/logout"> Logout</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- End of Nav -->
+            <!-- Start of Body -->
+            {{template "page-body" .Data}}
+            <!-- End of Body -->
+            <script src="/static/js/jquery-3.4.1.min.js"></script>
+            <script src="/static/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Start of Footer -->
+        <footer id="footer">
+            <div class="container" style="position: sticky; background-color: #F6f6f6">
+                <span class="float-left text-muted"><strong>GoAccomplish</strong></span>
+                <span class="float-right text-muted">Copyright © 2020</span>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    </body>
+</html>
+{{end}}

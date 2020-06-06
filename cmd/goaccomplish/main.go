@@ -44,17 +44,14 @@ func main() {
 
 	log.Printf("Connection to Database established. Version: %s", version)
 
-	authKey := securecookie.GenerateRandomKey(64)
-	encKey := securecookie.GenerateRandomKey(32)
-
 	store := sessions.NewCookieStore(
-		authKey,
-		encKey,
+		securecookie.GenerateRandomKey(64), // authentication key
+		securecookie.GenerateRandomKey(32), // encryption key (AES-256)
 	)
 
 	store.Options = &sessions.Options{
 		Path:     "/",
-		MaxAge:   86400 * 7,
+		MaxAge:   86400 * 7, // Sessions good for 1 week
 		HttpOnly: true,
 	}
 

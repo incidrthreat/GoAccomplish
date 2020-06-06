@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/securecookie"
@@ -21,7 +22,8 @@ func main() {
 
 	config, err := config.ConfigurationFromFile("config.json")
 	if err != nil {
-		panic(err)
+		log.Println(err)
+		os.Exit(1)
 	}
 
 	dc := models.DatabaseConn{
@@ -33,7 +35,8 @@ func main() {
 
 	db, err := models.BuildDatabaseConn("mysql", dc)
 	if err != nil {
-		panic(err)
+		log.Println(err)
+		os.Exit(1)
 	}
 
 	defer db.Close()

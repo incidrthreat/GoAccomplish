@@ -10,6 +10,7 @@ import (
 	"github.com/gorilla/sessions"
 	"github.com/incidrthreat/GoAccomplish/config"
 	"github.com/incidrthreat/GoAccomplish/models"
+	"github.com/incidrthreat/GoAccomplish/webapp"
 )
 
 const (
@@ -58,8 +59,15 @@ func main() {
 		HttpOnly: true,
 	}
 
+	app := &webapp.App{
+		HTMLDir:   htmlDir,
+		StaticDir: staticDir,
+		Store:     *store,
+		Database:  &dataService,
+	}
+
 	log.Printf("Starting server on %s", config.ListenInterface)
 
-	err = http.ListenAndServe(config.ListenInterface, nil)
+	err = http.ListenAndServe(config.ListenInterface, app.Routes())
 	log.Fatal(err)
 }
